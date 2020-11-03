@@ -17,3 +17,6 @@ def main():
 	http_server.listen(options.port)	
 	print('Listening on http://localhost:{}'.format(options.port'))
 	IOLoop.current().start()
+
+if __name__ == '__main__':
+	main()
