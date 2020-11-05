@@ -2,3 +2,6 @@
 command=custom_pylint
 params=--rcfile=/path/to/another/pylint.rc
 limit=8.0
+
+[MASTER]
+init-hook='import sys; sys.path.append("/path/to/root")'
