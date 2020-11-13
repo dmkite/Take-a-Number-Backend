@@ -17,8 +17,12 @@ class Application(cyclone.web.Application):
 
         cyclone.web.Application.__init__(self, handlers, **settings)
 
-if __name__ == "__main__":
+def get_app():
     app = Application()
     reactor.listenTCP(8888, app)
     print("App started on port {}".format(8888))
     reactor.run()
+
+
+if __name__ == "__main__":
+    get_app()
