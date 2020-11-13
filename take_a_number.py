@@ -1,12 +1,17 @@
+from cyclone import redis
 import cyclone.web
-from twisted.internet import reactor
+from twisted.internet import defer, reactor
 
 from src.api.ping_handler import PingHandler
+from src.api.queue_handler import QueueHandler
+from src.lib.redis_mixin import RedisMixin
 
 class Application(cyclone.web.Application):
     def __init__(self):
+        RedisMixin.setup()
         handlers = [
             (r"/ping", PingHandler),
+            (r"/queue", QueueHandler)
         ]
 
         settings = dict(
