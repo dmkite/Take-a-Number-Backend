@@ -9,6 +9,6 @@ def handle_error(method):
         try:
             yield method(self, *args, **kwargs)
         except Exception as e:
-            self.log()
-            self.fail_response(e)
+            self.log(e)
+            yield self.fail_response(e)
     return wrapper

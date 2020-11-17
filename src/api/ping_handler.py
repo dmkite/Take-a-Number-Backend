@@ -5,7 +5,7 @@ from src.lib.logger import Logger
 from src.lib.error_handling import handle_error
 from src.lib.base import BaseHandler
 
-class PingHandler(BaseHandler, Logger):
+class PingHandler(BaseHandler):
 	"""Verify the system is working"""
 	@handle_error
 	@defer.inlineCallbacks

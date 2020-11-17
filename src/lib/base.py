@@ -1,7 +1,8 @@
 from cyclone.escape import recursive_unicode
 from cyclone.web import RequestHandler
+from src.lib.logger import Logger
 
-class BaseHandler(RequestHandler):
+class BaseHandler(RequestHandler, Logger):
     def ok_response(self, response):
         self.set_header('Content-Type', 'application/json')
         msg = {
