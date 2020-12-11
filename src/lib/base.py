@@ -1,5 +1,8 @@
+import json
+
 from cyclone.escape import recursive_unicode
 from cyclone.web import RequestHandler
+
 from src.lib.logger import Logger
 
 class BaseHandler(RequestHandler, Logger):
@@ -18,7 +21,7 @@ class BaseHandler(RequestHandler, Logger):
         self.set_header('Content-Type', 'application/json')
         msg = {
             'stat': 'FAIL',
-            'message': msg}
+            'message': 'no'}#json.dumps(msg)}
 
         msg.update(kwargs)
 

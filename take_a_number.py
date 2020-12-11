@@ -1,5 +1,8 @@
+import sys
+
 import cyclone.web
 from twisted.internet import defer, reactor
+from twisted.python import log
 
 from src.api.ping_handler import PingHandler
 from src.api.queue_handler import QueueHandler
@@ -17,6 +20,7 @@ class Application(cyclone.web.Application):
             xheaders=False,
             static_path="./static",
             templates_path="./templates",
+            debug=True
         )
 
         cyclone.web.Application.__init__(self, handlers, **settings)
@@ -24,8 +28,9 @@ class Application(cyclone.web.Application):
 def get_app():
     redis_conn = redis.Connection()
     app = Application(redis_conn)
-    reactor.listenTCP(8888, app)
+    reactor.listenTCP(8888, app, interface="127.0.0.1")
     print("App started on port {}".format(8888))
+    log.startLogging(sys.stdout)
     reactor.run()
 
 

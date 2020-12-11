@@ -2,3 +2,4 @@ tornado
 twisted
 cyclone
 pytest
+redis

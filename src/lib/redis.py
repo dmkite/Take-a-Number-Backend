@@ -1,10 +1,17 @@
-from cyclone import redis
-from twisted.internet import defer
-
+# from cyclone import redis
+# from twisted.internet import defer
+import redis
 
 def Connection():
     # may expand settings in future
     redis_conf = {
-        'dbid': 1
+        'host':'127.0.0.1',#'localhost',
+        'port': 6379,
+        'reconnect': False,#True,
+        'dbid': 1,
+        'poolsize': 1
     }
-    return redis.lazyConnectionPool(**redis_conf)
+    r_conn = redis.Redis()
+    return r_conn
+    # return redis.lazyConnectionPool(**redis_conf)
+

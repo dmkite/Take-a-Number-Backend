@@ -14,4 +14,7 @@ class Logger():
     def log(self, msg, log_level=LogLevel.TRACE, **kwargs):
         if log_level.value >= self.log_level.value:
             log.msg(msg)
-        print('msg={}'.format(msg), **kwargs)
+        print(
+            'lvl={}'.format(self.log_level), 
+            'msg={}'.format(msg), 
+            **kwargs)
